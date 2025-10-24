@@ -21,7 +21,10 @@ export async function apiCreateListing(apiClient, token) {
 
   const createListingResponse = await apiClient.post(`/api/estate-objects`, {
     multipart: data,
-    authorization: 'Bearer ${token}',
+    // Playwright request API expects headers under `headers` and token interpolated
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   const loginApiResponseJson = await createListingResponse.json();
