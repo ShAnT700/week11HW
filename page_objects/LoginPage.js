@@ -10,8 +10,8 @@ export class LoginPage {
   async login(email, password) {
     const loginApiResponse = await request.post(`/api/users/login`, {
       data: {
-        email: "shant700@gmail.com",
-        password: "123456789",
+        email: email,
+        password: password,
       },
     });
   }
